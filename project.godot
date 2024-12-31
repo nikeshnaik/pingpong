@@ -14,3 +14,7 @@ config/name="pingpong"
 run/main_scene="res://scenes/main_game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor]
+
+movie_writer/movie_file="/Users/nikesh/projects/game_programming/pingpong/game_records/debugs.avi"
