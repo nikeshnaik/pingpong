@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1dqwjibupl82"]
+[gd_scene load_steps=6 format=3 uid="uid://c1dqwjibupl82"]
 
 [ext_resource type="Script" path="res://script/ball.gd" id="1_qfihn"]
 [ext_resource type="Texture2D" uid="uid://yx4emr2haquo" path="res://assets/arts/Ball.png" id="2_rkrl3"]
@@ -6,11 +6,18 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vd241"]
 radius = 15.0
 
+[sub_resource type="Curve" id="Curve_2pnoi"]
+_data = [Vector2(0.0111732, 0.990736), 0.0, 0.0, 0, 0, Vector2(0.731844, 0.660333), 0.0, 0.0, 0, 0, Vector2(0.98324, 0.00261283), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_pvy6j"]
+offsets = PackedFloat32Array(0, 0.983333)
+colors = PackedColorArray(0.959618, 0.455561, 0.77344, 1, 0.776471, 0.117647, 0.584314, 0)
+
 [node name="Node" type="Node2D"]
 
 [node name="Ball" type="RigidBody2D" parent="."]
 script = ExtResource("1_qfihn")
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 position = Vector2(-88, -81)
@@ -20,3 +27,13 @@ metadata/_edit_lock_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
 position = Vector2(-88, -81)
 texture = ExtResource("2_rkrl3")
+metadata/_edit_lock_ = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Ball/Sprite2D"]
+amount = 5
+lifetime = 0.2
+speed_scale = 0.5
+texture = ExtResource("2_rkrl3")
+scale_amount_curve = SubResource("Curve_2pnoi")
+color_ramp = SubResource("Gradient_pvy6j")
+metadata/_edit_lock_ = true
