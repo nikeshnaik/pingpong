@@ -17,19 +17,21 @@ colors = PackedColorArray(0.959618, 0.455561, 0.77344, 1, 0.776471, 0.117647, 0.
 [node name="Node" type="Node2D"]
 
 [node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(1, 0)
 script = ExtResource("1_qfihn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-position = Vector2(-88, -81)
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_vd241")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
-position = Vector2(-88, -81)
+position = Vector2(1, 0)
 texture = ExtResource("2_rkrl3")
 metadata/_edit_lock_ = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Ball/Sprite2D"]
+position = Vector2(1, 0)
 amount = 5
 lifetime = 0.2
 speed_scale = 0.5

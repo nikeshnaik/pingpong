@@ -133,6 +133,9 @@ tile_set = SubResource("TileSet_mrk0q")
 collision_visibility_mode = 1
 navigation_visibility_mode = 1
 
+[node name="Ball" parent="Board" instance=ExtResource("5_gumqx")]
+position = Vector2(-281, -77)
+
 [node name="Score" type="TileMapLayer" parent="Board"]
 z_index = 1
 tile_map_data = PackedByteArray("AADz//P/AAAAAAAAAAD0//P/AAABAAAAAAD1//P/AAACAAAAAAD2//P/AAADAAAAAAD3//P/AAAEAAAAAAD4//P/AAAFAAAAAAD5//P/AAAGAAAAAAD6//P/AAAHAAAAAAD7//P/AAAIAAAAAAD8//P/AAAJAAAAAADx//P/AAAAAAAAAADy//P/AAABAAAAAAADAPP/AAAAAAAAAAAEAPP/AAABAAAAAAAFAPP/AAACAAAAAAAGAPP/AAADAAAAAAAHAPP/AAAEAAAAAAAIAPP/AAAFAAAAAAAJAPP/AAAGAAAAAAAKAPP/AAAHAAAAAAALAPP/AAAIAAAAAAAMAPP/AAAJAAAAAAANAPP/AAAAAAAAAAAOAPP/AAABAAAAAAAPAPP/AAACAAAAAAACAPP/AAAKAAAAAgD9//P/AAAKAAAAAADw//P/AAAAAAAAAAA=")
@@ -140,37 +143,38 @@ tile_set = SubResource("TileSet_rm1hh")
 
 [node name="Player" type="Node2D" parent="Board"]
 z_index = 1
+position = Vector2(-461, -41)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Board/Player"]
 script = ExtResource("3_0jci4")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Player/CharacterBody2D"]
-position = Vector2(-450, -87)
 shape = SubResource("CapsuleShape2D_7hstj")
 debug_color = Color(0.247681, 0.589711, 0.657594, 0.42)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Board/Player/CharacterBody2D"]
-position = Vector2(-450, -85)
+position = Vector2(2, -4)
 texture = ExtResource("3_x2v6a")
+metadata/_edit_lock_ = true
 
 [node name="Computer" type="Node2D" parent="Board"]
 z_index = 1
+position = Vector2(460, -69)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Board/Computer"]
-position = Vector2(3, 16)
 script = ExtResource("5_ph0dk")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Board/Computer/CharacterBody2D"]
-position = Vector2(459, -98)
 texture = ExtResource("4_ya2oj")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Computer/CharacterBody2D"]
-position = Vector2(456, -97)
 shape = SubResource("CapsuleShape2D_66gvw")
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(10, -59)
 zoom = Vector2(0.9, 0.9)
-
-[node name="Ball" parent="." instance=ExtResource("5_gumqx")]
-position = Vector2(-61, -132)
