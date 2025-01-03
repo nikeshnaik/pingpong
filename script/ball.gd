@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @onready var trail = $Sprite2D/CPUParticles2D
 
-var initial_speed = 1000
+var ball_speed = 1000
 var attached_to_paddle = true
 var paddle
 
@@ -23,9 +23,12 @@ func launch_ball():
 	attached_to_paddle = false
 	freeze = false
 
-	var direction =  Vector2(randf_range(-0.5, 0.5),-1).normalized()
-	
-	apply_central_impulse(direction * initial_speed)
+	var angle_start = 180 if randf() > 0.5 else 0
+	var random_angle = deg_to_rad(randf_range(angle_start, angle_start + 180))
+	var direction = Vector2(cos(random_angle), sin(random_angle))
+
+	linear_velocity = direction * ball_speed
+
 	
 func reset_ball():
 	linear_velocity = Vector2.ZERO

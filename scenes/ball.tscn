@@ -17,7 +17,11 @@ colors = PackedColorArray(0.959618, 0.455561, 0.77344, 1, 0.776471, 0.117647, 0.
 [node name="Node" type="Node2D"]
 
 [node name="Ball" type="RigidBody2D" parent="."]
+z_index = 1
 position = Vector2(1, 0)
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
 script = ExtResource("1_qfihn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
