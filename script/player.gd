@@ -16,5 +16,5 @@ func _physics_process(delta: float) -> void:
 	velocity.x = 0
 	move_and_slide()
 	
-	global_position.x = -465
+	global_position.x = -375
 	global_position.y = clamp(global_position.y, top_limit, bottom_limit)

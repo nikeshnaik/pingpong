@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://cdq5scd53hhys"]
+[gd_scene load_steps=11 format=4 uid="uid://cdq5scd53hhys"]
 
 [ext_resource type="Texture2D" uid="uid://blff80xdnrc38" path="res://assets/arts/Board.png" id="1_e5nv6"]
 [ext_resource type="Texture2D" uid="uid://rjuh0fs8qp40" path="res://assets/arts/ScoreBar.png" id="2_vk0t5"]
-[ext_resource type="Script" path="res://script/player.gd" id="3_0jci4"]
-[ext_resource type="Texture2D" uid="uid://dmmb0e5buegsg" path="res://assets/arts/Player.png" id="3_x2v6a"]
-[ext_resource type="Texture2D" uid="uid://m0lx65dcyhfv" path="res://assets/arts/Computer.png" id="4_ya2oj"]
+[ext_resource type="PackedScene" uid="uid://cucys12aqwi30" path="res://scenes/player.tscn" id="4_ic246"]
 [ext_resource type="PackedScene" uid="uid://c1dqwjibupl82" path="res://scenes/ball.tscn" id="5_gumqx"]
-[ext_resource type="Script" path="res://script/computer.gd" id="5_ph0dk"]
+[ext_resource type="PackedScene" uid="uid://bd0fcsxmsrcl4" path="res://scenes/computer.tscn" id="5_x6kjj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c5xr0"]
 
@@ -157,12 +155,6 @@ texture_region_size = Vector2i(30, 30)
 tile_size = Vector2i(30, 30)
 sources/0 = SubResource("TileSetAtlasSource_355xt")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7hstj"]
-height = 120.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66gvw"]
-height = 124.0
-
 [node name="MainGame" type="Node2D"]
 
 [node name="Board" type="TileMapLayer" parent="."]
@@ -181,39 +173,9 @@ z_index = 1
 tile_map_data = PackedByteArray("AADz//P/AAAAAAAAAAD0//P/AAABAAAAAAD1//P/AAACAAAAAAD2//P/AAADAAAAAAD3//P/AAAEAAAAAAD4//P/AAAFAAAAAAD5//P/AAAGAAAAAAD6//P/AAAHAAAAAAD7//P/AAAIAAAAAAD8//P/AAAJAAAAAADx//P/AAAAAAAAAADy//P/AAABAAAAAAADAPP/AAAAAAAAAAAEAPP/AAABAAAAAAAFAPP/AAACAAAAAAAGAPP/AAADAAAAAAAHAPP/AAAEAAAAAAAIAPP/AAAFAAAAAAAJAPP/AAAGAAAAAAAKAPP/AAAHAAAAAAALAPP/AAAIAAAAAAAMAPP/AAAJAAAAAAANAPP/AAAAAAAAAAAOAPP/AAABAAAAAAAPAPP/AAACAAAAAAACAPP/AAAKAAAAAgD9//P/AAAKAAAAAADw//P/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_rm1hh")
 
-[node name="Player" type="Node2D" parent="Board"]
-z_index = 2
-position = Vector2(-461, -41)
+[node name="Player" parent="Board" instance=ExtResource("4_ic246")]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Board/Player"]
-script = ExtResource("3_0jci4")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Player/CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_7hstj")
-debug_color = Color(0.247681, 0.589711, 0.657594, 0.42)
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Board/Player/CharacterBody2D"]
-position = Vector2(2, -4)
-texture = ExtResource("3_x2v6a")
-metadata/_edit_lock_ = true
-
-[node name="Computer" type="Node2D" parent="Board"]
-z_index = 2
-position = Vector2(460, -69)
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Board/Computer"]
-script = ExtResource("5_ph0dk")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Board/Computer/CharacterBody2D"]
-texture = ExtResource("4_ya2oj")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Computer/CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_66gvw")
-metadata/_edit_lock_ = true
+[node name="Computer" parent="Board" instance=ExtResource("5_x6kjj")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(10, -59)

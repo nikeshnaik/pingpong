@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd0fcsxmsrcl4"]
+
+[ext_resource type="Script" path="res://script/computer.gd" id="1_4dkbg"]
+[ext_resource type="Texture2D" uid="uid://m0lx65dcyhfv" path="res://assets/arts/Computer.png" id="2_daxg1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66gvw"]
+radius = 5.0
+height = 74.0
+
+[node name="Computer" type="Node2D"]
+z_index = 2
+position = Vector2(460, -69)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_4dkbg")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-0.876503, 17.26)
+scale = Vector2(0.573708, 0.704333)
+texture = ExtResource("2_daxg1")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 14)
+shape = SubResource("CapsuleShape2D_66gvw")
+metadata/_edit_lock_ = true
