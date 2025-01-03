@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1dqwjibupl82"]
+[gd_scene load_steps=7 format=3 uid="uid://c1dqwjibupl82"]
 
 [ext_resource type="Script" path="res://script/ball.gd" id="1_qfihn"]
 [ext_resource type="Texture2D" uid="uid://yx4emr2haquo" path="res://assets/arts/Ball.png" id="2_rkrl3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2njbh"]
+bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vd241"]
 radius = 15.0
@@ -17,11 +20,11 @@ colors = PackedColorArray(0.959618, 0.455561, 0.77344, 1, 0.776471, 0.117647, 0.
 [node name="Node" type="Node2D"]
 
 [node name="Ball" type="RigidBody2D" parent="."]
-z_index = 1
 position = Vector2(1, 0)
+physics_material_override = SubResource("PhysicsMaterial_2njbh")
 gravity_scale = 0.0
-can_sleep = false
-lock_rotation = true
+linear_damp_mode = 1
+angular_damp_mode = 1
 script = ExtResource("1_qfihn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
