@@ -7,21 +7,17 @@
 radius = 6.0
 height = 82.0
 
-[node name="Player" type="Node2D"]
-z_index = 2
-position = Vector2(-461, -41)
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_3d02o")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 16)
 shape = SubResource("CapsuleShape2D_7hstj")
 debug_color = Color(0.247681, 0.589711, 0.657594, 0.42)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.25, 14)
 scale = Vector2(0.617647, 0.7)
 texture = ExtResource("2_m7cmw")

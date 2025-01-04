@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 movie_writer/movie_file="/Users/nikesh/projects/game_programming/pingpong/game_records/debugs.avi"
 
+[global_group]
+
+Board=""
+
 [input]
 
 ui_up={

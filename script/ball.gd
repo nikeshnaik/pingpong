@@ -5,10 +5,12 @@ extends RigidBody2D
 var ball_speed = 1000
 var attached_to_paddle = true
 var paddle
+var direction
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	paddle = get_node("../../Player/CharacterBody2D/CollisionShape2D") as CollisionShape2D
+	paddle = get_node("../Player/CollisionShape2D") as CollisionShape2D
+	
 	freeze = true
 	
 func _physics_process(delta: float) -> void:
@@ -29,21 +31,15 @@ func launch_ball():
 
 	linear_velocity = direction * ball_speed
 
-	
-func reset_ball():
-	linear_velocity = Vector2.ZERO
-	angular_velocity = 0
-	freeze = true
-	attached_to_paddle = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	
+	
 	if linear_velocity.length() > 1:
 		trail.emitting = true
 		var angle = linear_velocity.angle()
 		trail.rotation = angle
 	else:
 		trail.emitting = false
-		
-	
-	

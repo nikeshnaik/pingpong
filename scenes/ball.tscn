@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://yx4emr2haquo" path="res://assets/arts/Ball.png" id="2_rkrl3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2njbh"]
+friction = 0.0
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vd241"]
@@ -17,27 +18,26 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.983333)
 colors = PackedColorArray(0.959618, 0.455561, 0.77344, 1, 0.776471, 0.117647, 0.584314, 0)
 
-[node name="Node" type="Node2D"]
-
-[node name="Ball" type="RigidBody2D" parent="."]
+[node name="Ball" type="RigidBody2D" groups=["Board"]]
 position = Vector2(1, 0)
 physics_material_override = SubResource("PhysicsMaterial_2njbh")
 gravity_scale = 0.0
+lock_rotation = true
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_qfihn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_vd241")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 0)
 texture = ExtResource("2_rkrl3")
 metadata/_edit_lock_ = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Ball/Sprite2D"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D"]
 position = Vector2(1, 0)
 amount = 5
 lifetime = 0.2

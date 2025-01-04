@@ -7,7 +7,7 @@
 radius = 5.0
 height = 74.0
 
-[node name="Computer" type="Node2D"]
+[node name="Computer" type="Node2D" groups=["Board"]]
 z_index = 2
 position = Vector2(460, -69)
 
