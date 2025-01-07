@@ -11,7 +11,7 @@ height = 82.0
 position = Vector2(-271, -63)
 script = ExtResource("1_3d02o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(-2, 16)
 shape = SubResource("CapsuleShape2D_7hstj")
 debug_color = Color(0.247681, 0.589711, 0.657594, 0.42)

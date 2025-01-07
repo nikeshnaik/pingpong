@@ -21,7 +21,7 @@ scale = Vector2(0.573708, 0.704333)
 texture = ExtResource("2_daxg1")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" groups=["Computer"]]
 position = Vector2(0, 14)
 shape = SubResource("CapsuleShape2D_66gvw")
 metadata/_edit_lock_ = true

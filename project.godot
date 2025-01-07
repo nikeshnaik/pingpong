@@ -11,13 +11,20 @@ config_version=5
 [application]
 
 config/name="pingpong"
-run/main_scene="res://scenes/gamev_1.tscn"
+run/main_scene="res://scenes/game_v_2.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [editor]
 
 movie_writer/movie_file="/Users/nikesh/projects/game_programming/pingpong/game_records/debugs.avi"
+
+[global_group]
+
+vertical=""
+Computer=""
+Player=""
+Board=""
 
 [input]
 

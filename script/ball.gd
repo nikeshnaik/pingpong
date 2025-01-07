@@ -9,7 +9,8 @@ var direction
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	paddle = get_node("../Player/CollisionShape2D") as CollisionShape2D
+	print(self.get_path())
+	paddle = get_node("../CharacterBody2D/CollisionShape2D") as CollisionShape2D
 	
 	freeze = true
 	
@@ -17,6 +18,7 @@ func _physics_process(delta: float) -> void:
 	if attached_to_paddle:
 		global_position.x = paddle.global_position.x + 25	
 		global_position.y = paddle.global_position.y
+		pass
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		launch_ball()
@@ -45,19 +47,4 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	
-	var colliding_bodies = get_colliding_bodies()
-
-	for cbody in colliding_bodies:
-		
-		if cbody is TileMapLayer:
-			var clicked_cell = cbody.local_to_map(cbody.get_local_mouse_position())
-			var data = cbody.get_cell_tile_data(clicked_cell)
-			if data:
-				print("Horizontal Border  -->",data.get_custom_data("horizontal_border"))
-				print("Vertical Border  -->",data.get_custom_data("vertical_border"))
-			else:
-				print("No Data, check later if this is a bug due to seamless collisons")
-		
-		if cbody is CharacterBody2D:
-			print("Player touch")
+	pass # Replace with function body.
