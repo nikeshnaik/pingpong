@@ -7,7 +7,7 @@
 radius = 6.0
 height = 82.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 position = Vector2(-271, -63)
 script = ExtResource("1_3d02o")
 

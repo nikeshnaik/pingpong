@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://bhaf0ahkfxqnm"]
+[gd_scene load_steps=20 format=3 uid="uid://bhaf0ahkfxqnm"]
 
+[ext_resource type="Script" path="res://script/globals.gd" id="1_2ssjk"]
 [ext_resource type="Texture2D" uid="uid://blff80xdnrc38" path="res://assets/arts/Board.png" id="1_eatjy"]
 [ext_resource type="PackedScene" uid="uid://c1dqwjibupl82" path="res://scenes/ball.tscn" id="1_jnkoc"]
 [ext_resource type="Texture2D" uid="uid://rjuh0fs8qp40" path="res://assets/arts/ScoreBar.png" id="2_uu87h"]
@@ -106,6 +107,7 @@ sources/2 = SubResource("TileSetAtlasSource_ft1b0")
 
 [node name="GameV2" type="Node2D"]
 position = Vector2(415, 245)
+script = ExtResource("1_2ssjk")
 
 [node name="Board" type="TileMapLayer" parent="."]
 
@@ -152,15 +154,18 @@ tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0
 tile_set = SubResource("TileSet_ne1rw")
 metadata/_edit_lock_ = true
 
-[node name="Computer" parent="Board/GameMaster/playarea" instance=ExtResource("5_vdd2p")]
-position = Vector2(-12, -247)
-
 [node name="Ball" parent="Board/GameMaster/playarea" instance=ExtResource("1_jnkoc")]
 position = Vector2(-439, -186)
 scale = Vector2(1, 1)
 
-[node name="CharacterBody2D" parent="Board/GameMaster/playarea" groups=["Board"] instance=ExtResource("4_d5jsm")]
-position = Vector2(-788, -249)
+[node name="player" parent="Board/GameMaster/playarea" groups=["Board", "Player"] instance=ExtResource("4_d5jsm")]
+position = Vector2(-783.999, -234)
+scale = Vector2(0.999999, 0.999999)
+metadata/_edit_lock_ = true
+
+[node name="computer" parent="Board/GameMaster/playarea" instance=ExtResource("5_vdd2p")]
+position = Vector2(-9.99997, -232)
+scale = Vector2(0.999999, 0.999999)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-427, -236)

@@ -7,21 +7,21 @@
 radius = 5.0
 height = 74.0
 
-[node name="Computer" type="Node2D" groups=["Board"]]
-z_index = 2
-position = Vector2(460, -69)
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="computer" type="CharacterBody2D" groups=["Board", "Computer"]]
 script = ExtResource("1_4dkbg")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.876503, 17.26)
 scale = Vector2(0.573708, 0.704333)
 texture = ExtResource("2_daxg1")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" groups=["Computer"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Computer"]]
 position = Vector2(0, 14)
 shape = SubResource("CapsuleShape2D_66gvw")
 metadata/_edit_lock_ = true
+
+[node name="Computer" type="Node2D" parent="." groups=["Board"]]
+z_index = 2
+position = Vector2(460, -69)
