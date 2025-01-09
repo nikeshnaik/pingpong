@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhaf0ahkfxqnm"]
+[gd_scene load_steps=26 format=3 uid="uid://bhaf0ahkfxqnm"]
 
 [ext_resource type="Script" path="res://script/globals.gd" id="1_2ssjk"]
 [ext_resource type="Texture2D" uid="uid://blff80xdnrc38" path="res://assets/arts/Board.png" id="1_eatjy"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://script/game_master.gd" id="3_2dxk2"]
 [ext_resource type="PackedScene" uid="uid://cucys12aqwi30" path="res://scenes/player.tscn" id="4_d5jsm"]
 [ext_resource type="PackedScene" uid="uid://bd0fcsxmsrcl4" path="res://scenes/computer.tscn" id="5_vdd2p"]
+[ext_resource type="PackedScene" uid="uid://bpy7vujipnh6c" path="res://scenes/ui.tscn" id="8_bon7p"]
+[ext_resource type="FontFile" uid="uid://jrvuj8q7ogwy" path="res://assets/fonts/itch.io Cover/Teko/static/Teko-Bold.ttf" id="9_e0jky"]
+[ext_resource type="FontFile" uid="uid://b2i5c6fnbda4t" path="res://assets/fonts/itch.io Cover/Press_Start_2P/PressStart2P-Regular.ttf" id="9_eqd4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pdi7"]
 texture = ExtResource("1_eatjy")
@@ -105,9 +108,30 @@ tile_size = Vector2i(799, 455)
 sources/0 = SubResource("TileSetAtlasSource_qaixd")
 sources/2 = SubResource("TileSetAtlasSource_ft1b0")
 
+[sub_resource type="Theme" id="Theme_dmnpp"]
+default_font = ExtResource("9_e0jky")
+default_font_size = 75
+
+[sub_resource type="LabelSettings" id="LabelSettings_q5hw5"]
+font = ExtResource("9_eqd4y")
+font_size = 56
+font_color = Color(0.553149, 0.390381, 0.513155, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wh3o5"]
+font = ExtResource("9_eqd4y")
+font_size = 45
+font_color = Color(0.81556, 0.764177, 0.803844, 1)
+
 [node name="GameV2" type="Node2D"]
 position = Vector2(415, 245)
 script = ExtResource("1_2ssjk")
+
+[node name="Background" parent="." instance=ExtResource("8_bon7p")]
+offset_left = -1145.0
+offset_top = -609.0
+offset_right = -1145.0
+offset_bottom = -609.0
+metadata/_edit_lock_ = true
 
 [node name="Board" type="TileMapLayer" parent="."]
 
@@ -167,8 +191,66 @@ metadata/_edit_lock_ = true
 position = Vector2(-9.99997, -232)
 scale = Vector2(0.999999, 0.999999)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Board/GameMaster"]
+layer = 2
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+follow_viewport_enabled = true
+
+[node name="Scorep1" type="RichTextLabel" parent="Board/GameMaster/CanvasLayer"]
+offset_left = -45.667
+offset_top = -82.333
+offset_right = 13.333
+offset_bottom = 25.667
+scale = Vector2(0.14, 0.14)
+theme = SubResource("Theme_dmnpp")
+text = "6
+"
+fit_content = true
+scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="Scorep2" type="RichTextLabel" parent="Board/GameMaster/CanvasLayer"]
+offset_left = 40.6667
+offset_top = -82.3333
+offset_right = 118.667
+offset_bottom = 25.6667
+scale = Vector2(0.14, 0.14)
+theme = SubResource("Theme_dmnpp")
+text = "6
+"
+fit_content = true
+scroll_active = false
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Board/GameMaster/CanvasLayer"]
+offset_left = -9.0
+offset_top = -79.0
+offset_right = 624.0
+offset_bottom = -23.0
+scale = Vector2(0.03, 0.06)
+text = "TIME"
+label_settings = SubResource("LabelSettings_q5hw5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Label2" type="Label" parent="Board/GameMaster/CanvasLayer"]
+offset_left = -8.33333
+offset_top = -75.3333
+offset_right = 171.667
+offset_bottom = -26.3333
+scale = Vector2(0.1, 0.12)
+text = "1:60
+"
+label_settings = SubResource("LabelSettings_wh3o5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-427, -236)
-zoom = Vector2(1.2, 1.2)
+zoom = Vector2(0.9, 0.9)
+metadata/_edit_lock_ = true
 
 [connection signal="body_shape_entered" from="Board/GameMaster/playarea/Ball" to="Board/GameMaster" method="_on_ball_body_shape_entered"]
