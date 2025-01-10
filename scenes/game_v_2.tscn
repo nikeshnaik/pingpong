@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bhaf0ahkfxqnm"]
+[gd_scene load_steps=27 format=3 uid="uid://bhaf0ahkfxqnm"]
 
 [ext_resource type="Script" path="res://script/globals.gd" id="1_2ssjk"]
 [ext_resource type="Texture2D" uid="uid://blff80xdnrc38" path="res://assets/arts/Board.png" id="1_eatjy"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cucys12aqwi30" path="res://scenes/player.tscn" id="4_d5jsm"]
 [ext_resource type="PackedScene" uid="uid://bd0fcsxmsrcl4" path="res://scenes/computer.tscn" id="5_vdd2p"]
 [ext_resource type="PackedScene" uid="uid://bpy7vujipnh6c" path="res://scenes/ui.tscn" id="8_bon7p"]
+[ext_resource type="Script" path="res://script/update_score.gd" id="9_c1s60"]
 [ext_resource type="FontFile" uid="uid://jrvuj8q7ogwy" path="res://assets/fonts/itch.io Cover/Teko/static/Teko-Bold.ttf" id="9_e0jky"]
 [ext_resource type="FontFile" uid="uid://b2i5c6fnbda4t" path="res://assets/fonts/itch.io Cover/Press_Start_2P/PressStart2P-Regular.ttf" id="9_eqd4y"]
 
@@ -112,10 +113,9 @@ sources/2 = SubResource("TileSetAtlasSource_ft1b0")
 default_font = ExtResource("9_e0jky")
 default_font_size = 75
 
-[sub_resource type="LabelSettings" id="LabelSettings_q5hw5"]
-font = ExtResource("9_eqd4y")
-font_size = 56
-font_color = Color(0.553149, 0.390381, 0.513155, 1)
+[sub_resource type="Theme" id="Theme_d1cy6"]
+default_font = ExtResource("9_eqd4y")
+default_font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_wh3o5"]
 font = ExtResource("9_eqd4y")
@@ -151,6 +151,9 @@ position = Vector2(-15, 0)
 scale = Vector2(29, 29)
 physics_material_override = SubResource("PhysicsMaterial_qdg8a")
 script = ExtResource("3_2dxk2")
+
+[node name="Timer" type="Timer" parent="Board/GameMaster"]
+wait_time = 40.0
 
 [node name="left" type="CollisionShape2D" parent="Board/GameMaster" groups=["Board", "left_border"]]
 position = Vector2(-27.5948, -7.84483)
@@ -196,8 +199,9 @@ layer = 2
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 follow_viewport_enabled = true
+script = ExtResource("9_c1s60")
 
-[node name="Scorep1" type="RichTextLabel" parent="Board/GameMaster/CanvasLayer"]
+[node name="p1-score" type="RichTextLabel" parent="Board/GameMaster/CanvasLayer"]
 offset_left = -45.667
 offset_top = -82.333
 offset_right = 13.333
@@ -208,9 +212,10 @@ text = "6
 "
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 metadata/_edit_lock_ = true
 
-[node name="Scorep2" type="RichTextLabel" parent="Board/GameMaster/CanvasLayer"]
+[node name="p2-score" type="RichTextLabel" parent="Board/GameMaster/CanvasLayer"]
 offset_left = 40.6667
 offset_top = -82.3333
 offset_right = 118.667
@@ -221,21 +226,24 @@ text = "6
 "
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="Board/GameMaster/CanvasLayer"]
-offset_left = -9.0
+[node name="Time-label" type="RichTextLabel" parent="Board/GameMaster/CanvasLayer"]
+clip_contents = false
+offset_left = -4.33333
 offset_top = -79.0
-offset_right = 624.0
+offset_right = 340.667
 offset_bottom = -23.0
 scale = Vector2(0.03, 0.06)
+theme = SubResource("Theme_d1cy6")
+theme_override_colors/default_color = Color(0.317647, 0.211765, 0.301961, 1)
+bbcode_enabled = true
 text = "TIME"
-label_settings = SubResource("LabelSettings_q5hw5")
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_lock_ = true
+scroll_active = false
+autowrap_mode = 1
 
-[node name="Label2" type="Label" parent="Board/GameMaster/CanvasLayer"]
+[node name="Time" type="Label" parent="Board/GameMaster/CanvasLayer"]
 offset_left = -8.33333
 offset_top = -75.3333
 offset_right = 171.667

@@ -2,7 +2,7 @@ extends RigidBody2D
 
 @onready var trail = $Sprite2D/CPUParticles2D
 
-var ball_speed = 1000
+var ball_speed = 800
 var paddle
 var direction
 
@@ -36,3 +36,16 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	pass # Replace with function body.
+	
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	
+	var velocity = state.linear_velocity
+	
+	# Check if the velocity is non-zero to avoid division by zero
+	if velocity.length() > 0:
+		# Normalize the velocity and scale it to the constant speed
+		velocity = velocity.normalized() * ball_speed
+
+	# Apply the modified velocity back
+	state.linear_velocity = velocity
