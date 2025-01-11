@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -speed
 	elif Input.is_action_pressed("ui_down"):
 		velocity.y = speed
-		
+	
 	velocity.x = 0
 	move_and_slide()
 

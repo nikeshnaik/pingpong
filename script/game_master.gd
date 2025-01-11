@@ -16,9 +16,25 @@ extends StaticBody2D
 @onready var timerlabel = self.get_node("./CanvasLayer/Time")
 @onready var canvaslayer = self.get_node("./CanvasLayer")
 
-var scorep1 = 0
-var scorep2 = 0
-var time = 0
+class Player:
+	var player_id
+	var score
+	var side
+	
+	func _init(player_id:String, side:String) -> void:
+		player_id = player_id
+		side = side
+		score = 0
+	
+	func update_score(delta:int) -> void:
+		score = score + delta
+	
+	func get_score():
+		return str(score)
+
+
+var player1 = Player.new("player1", "left")
+var player2 = Player.new("player2", "right")
 
 signal p1update_label(newscore)
 signal p2update_label(newscore)
@@ -27,22 +43,20 @@ signal p2update_label(newscore)
 func _ready() -> void:
 	self.connect("p1update_label", Callable(canvaslayer, "p1score_update_label"))
 	self.connect("p2update_label", Callable(canvaslayer, "p2score_update_label"))
-	#timer.wait_time = 10  # Set the timer to 2 minutes
-	# Start the timer
 	self.reset()
 	print("Game resetted, before start")
 
 
 
 func reset() -> void:
-	timer.start() 
+	timer.start()
+	
 	if Globals.current_player == "computer":
 		ball.global_position.x = player.global_position.x - 7
 		ball.global_position.y = player.global_position.y + 10
 	else:
 		ball.global_position.x = computer.global_position.x - 13
 		ball.global_position.y = computer.global_position.y + 10
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,6 +66,8 @@ func _process(delta: float) -> void:
 	var seconds = remaining_time % 60          # Calculate seconds
 	timerlabel.text = str(minutes) + ":" + str(seconds).pad_zeros(2)  # Format as MM:SS
 	 
+	computer.global_position.y += paddle_ai() * delta
+	
 	if Input.is_action_pressed("ui_accept"):
 		ball.launch_ball()
 
@@ -64,6 +80,23 @@ func stop_game():
 	# You can also use this to show a game over screen or something else
 	# get_tree().quit()  # Uncomment to quit the game entirely if needed
 
+func paddle_ai():
+	var max_speed = 850.0  # Paddle maximum speed, slightly higher than the ball speed
+	var paddle_speed = 800.0  # Paddle's base speed (matches ball speed)
+	var randomness = 100.0  # Random speed boost for unpredictability
+	
+	var direction = sign(ball.global_position.y - computer.global_position.y)
+	
+	# Match the ball's speed with a buffer for precision
+	var speed_to_match = clamp(abs(ball.ball_speed), computer.velocity.y, max_speed)
+	
+	# Add random speed boost to make the paddle unpredictable
+	var random_boost = randf() * randomness if randi() % 10 == 0 else 0
+	
+	# Final speed, accounting for the direction
+	return direction * (speed_to_match + random_boost)
+	
+
 func _physics_process(delta: float) -> void:
 	pass
 
@@ -72,12 +105,12 @@ func _on_ball_body_shape_entered(body_rid: RID, body: Node, body_shape_index: in
 	
 	if colliding_node.is_in_group("left_border"):
 		print("Left Border")
-		scorep1 = scorep1 + 1
-		emit_signal("p1update_label", str(scorep1))
+		player1.update_score(1)
+		emit_signal("p1update_label", player1.get_score())
 	elif colliding_node.is_in_group("right_border"):
 		print("right border")
-		scorep2 = scorep2 + 1
-		emit_signal("p2update_label",  str(scorep2))
+		player2.update_score(1)
+		emit_signal("p2update_label",  player2.get_score())
 	elif colliding_node.is_in_group("Player"):
 		print("Player")	
 	elif colliding_node.is_in_group("Computer"):

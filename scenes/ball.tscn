@@ -43,7 +43,7 @@ metadata/_edit_lock_ = true
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D"]
 position = Vector2(1, 0)
 amount = 5
-lifetime = 0.2
+lifetime = 0.07
 speed_scale = 0.5
 texture = ExtResource("2_rkrl3")
 scale_amount_curve = SubResource("Curve_2pnoi")

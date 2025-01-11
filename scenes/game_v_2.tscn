@@ -208,7 +208,7 @@ offset_right = 13.333
 offset_bottom = 25.667
 scale = Vector2(0.14, 0.14)
 theme = SubResource("Theme_dmnpp")
-text = "6
+text = "0
 "
 fit_content = true
 scroll_active = false
@@ -222,7 +222,7 @@ offset_right = 118.667
 offset_bottom = 25.6667
 scale = Vector2(0.14, 0.14)
 theme = SubResource("Theme_dmnpp")
-text = "6
+text = "0
 "
 fit_content = true
 scroll_active = false
