@@ -1,0 +1,35 @@
+Host 213.173.110.201
+  HostName 213.173.110.201
+  User root
+  Port 25372
+  IdentityFile ~/.ssh/id_ed25519
+
+Host 89.187.159.51
+  HostName 89.187.159.51
+  User root
+  Port 40192
+  IdentityFile ~/.ssh/id_ed25519
+
+Host 194.68.245.9
+  HostName 194.68.245.9
+  User root
+  Port 22156
+  IdentityFile ~/.ssh/id_ed25519
+
+Host ssh.runpod.io
+  HostName ssh.runpod.io
+  User h2i7jmo1a2jjqf-6441126e
+  IdentityFile ~/.ssh/id_ed25519
+
+# Account 1
+Host github.com-nikesh
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_nikesh
+
+# Account 2
+Host github.com-account2
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_9thbeer
+

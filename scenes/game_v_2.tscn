@@ -126,7 +126,7 @@ font_color = Color(0.81556, 0.764177, 0.803844, 1)
 position = Vector2(415, 245)
 script = ExtResource("1_2ssjk")
 
-[node name="Background" parent="." instance=ExtResource("8_bon7p")]
+[node name="MainScene" parent="." instance=ExtResource("8_bon7p")]
 offset_left = -1145.0
 offset_top = -609.0
 offset_right = -1145.0
@@ -153,7 +153,7 @@ physics_material_override = SubResource("PhysicsMaterial_qdg8a")
 script = ExtResource("3_2dxk2")
 
 [node name="Timer" type="Timer" parent="Board/GameMaster"]
-wait_time = 40.0
+wait_time = 20.0
 
 [node name="left" type="CollisionShape2D" parent="Board/GameMaster" groups=["Board", "left_border"]]
 position = Vector2(-27.5948, -7.84483)
