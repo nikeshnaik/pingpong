@@ -4,10 +4,10 @@
 - [x] Collision across borders and center line
 - [x] Player, Compute default physics
 - [x] Ball default physics
-- [ ] Ball movement and bounce off top border
-- [ ] Ball bounce off bottom border
-- [ ] Player/Computer bounce ball
-- [ ] Score reset and Main Menu
+- [x] Ball movement and bounce off top border
+- [x] Ball bounce off bottom border
+- [x] Player/Computer bounce ball
+- [x] Score reset and Main Menu
 
 ![alt text](image.png)
 
